@@ -1,0 +1,317 @@
+\documentclass{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+  \setbeamercovered{transparent}
+}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+\usepackage[english]{babel}
+
+\usepackage[latin1]{inputenc}
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+
+\title[Solar Power Satellites]{
+  Progress in Microwave Engineering
+}
+\subtitle{
+  Microwave Power Transmission in Solar Power Satellites
+}
+\author[xdgxygpl@gmail.com]{
+  Guo~Xiangyu 02109051\and
+  Bao~Feng 02109003\and
+  Zhao~Liang 02109033
+}
+\institute[SEE at XDU]{
+  School of Electronic Engineering\\
+  Xidian University
+}
+\date[2013]{
+  May 2013
+}
+\subject{Microwave Engineering}
+
+\pgfdeclareimage[height=0.5cm]{university-logo}{xdlogo.pdf}
+\logo{\pgfuseimage{university-logo}}
+
+
+% uncover everything in a step-wise fashion
+%\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+%\includeonlyframes{bwdth}
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}[label=outl]{Outline}
+  \tableofcontents
+  % [pausesections]
+\end{frame}
+
+\section{Introduction}
+
+\subsection{What are SPS?}
+
+\begin{frame}[label=what1]{SPS:Solar Power Satellites}
+  \begin{definition}
+    A \alert{Solar Power Satellite} is \pause
+    a satellite which can be used to harvest solar energy in space
+    and to transmit it to the ground.
+  \end{definition}
+  \pause
+  \begin{block}{Main features}
+    \begin{itemize}
+    \item Located in a \emph{geosynchronous orbit}.
+      (Height:$3.6\times 10^5$ km; Linear Velocity:$3.07$ km/s)
+    \item Transmitting energy using microwave.
+      (Frequency: 5.8 GHz)
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}[label=what2]{A complete SPS system}
+  \begin{columns}
+    \column{.5\textwidth}
+    {\small A complete SPS system consists of a flight segment
+      ``\emph{solar power satellite}'' and a ground segment
+      ``\emph{rectenna}''.\cite{MPTtech4SPS}}
+    \column{.5\textwidth}
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=.8\textwidth]{SPS1.png}
+      \caption{Configuration of the SPS system.\cite{MPTtech4SPS}}
+    \end{figure}
+  \end{columns}
+\end{frame}
+
+
+\subsection{Why SPS?}
+\begin{frame}[label=why1]{Main advantages}
+  {compared to traditional terrestrial method}
+  \begin{columns}
+    \column{.6\textwidth}
+    \begin{itemize}
+      
+    \item<2-> Environment friendly.
+    \item<3-> Unaffected by weather conditions.
+    \item<4-> Much larger average solar power available per unit area.
+    \item<5-> Much longer time in view of the sun.
+    \end{itemize}
+
+    \column{.4\textwidth}
+    \begin{figure}[H]
+     \centering
+      \only<5->{\includegraphics[width=0.85\textwidth]{SPS4.eps}}
+      \only<5->{\caption{Nearly 24-hour operative.}}
+    \end{figure}
+  \end{columns}
+\end{frame}
+
+
+\subsection{A Brief History of SPS}
+\begin{frame}[label=his]{History}
+  \begin{columns}
+    \column{.5\textwidth}
+    \begin{itemize}
+      
+      \uncover<2->{\item (a) Pioneering work by Nikola Tesla
+        (early 20th century).}
+      \uncover<3->{\item (b) NASA JPL demonstration (1975)}
+      \uncover<4->{\item (c) Microwave transmission experiment in space
+        (1983,1993)}
+    \end{itemize}
+    \column{.5\textwidth}
+    \begin{figure}[H]
+     \centering
+      \includegraphics[angle=90,width=.67\textwidth]{SPS5.png}
+      \caption{Historical milestones.\cite{MPTtech4SPS}}
+    \end{figure}
+  \end{columns}
+\end{frame}
+
+
+\section{Key Points to Implementation}
+\begin{frame}[label=spsovv]{Overview of a SPS system}
+  \begin{block}{}
+    An SPS system includes a solar cell array, magnetrons, circularly
+    polarized(CP) phased arrays, and a CP rectenna array.[2]
+  \end{block}
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{SPS6.png}
+    \caption{SPS system diagram.\cite{MPTHMSP}}
+  \end{figure}
+\end{frame}
+
+
+\subsection{Transmitting Terminal}
+
+\begin{frame}[label=sc]{Solar cell}
+  \begin{block}{}
+  Technically, this is not what we are concerned.
+  But it do become the bottleneck of the SPS system.
+  \end{block}
+  The efficiency of solar sunlight to dc is listed below \pause
+  \begin{description}
+    \item[Practical tech] \hfill \\
+      Around only 30\%.\pause
+    \item[Adjustable Spectrum Lattice Matched] \hfill \\
+      Up to 44\% (\emph{Solar Junction} in Oct, 2012).\pause
+    \item[Quantum Dot Tech] \hfill \\
+      Theoretical maximum value is 75\%,
+      but cannot be achieved in a short term.\pause
+  \end{description}
+\end{frame}
+
+\begin{frame}[label=bwdth]{For the transmitting antenna}
+  \begin{block}{Requirement}
+    With a height of $3.6\times 10^7$ m, we need a extremly narrow
+    beamwidth to
+    \pause
+    \begin{itemize}
+    \item reduce sidelobes and spillover losses, \pause
+    \item minimize the terrestrial rectenna's size.
+    \end{itemize}
+  \end{block}
+  \begin{figure}[H]
+    \centering
+    \only<3>{\includegraphics[width=0.7\textwidth]{SPS7.eps}}
+  \end{figure}
+\end{frame}
+
+\begin{frame}[label=pharray]{Solution: Phased Array}
+  \begin{block}{An Example}
+    An array composed of $9\times 9$ subarrays, with each subarray
+    contains $8\times 8$ antenna elements.
+  \end{block}
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{pharray.png}
+    \caption{\footnotesize (a)amplitude taper;
+      (b)resultant array patterns.\cite{MPTHMSP}}
+  \end{figure}
+\end{frame}
+
+\subsection{Retrodirectivity}
+\begin{frame}[label=retroant]{What's Retrodirective Antenna and Why?}
+  \begin{definition}
+    A \alert{retrodirective antenna} is an antenna that transmits
+    signal back in the same direction it came from.
+  \end{definition}
+  \pause
+  Also due to the height of the satellite, even the slightest error
+  of the transmitting phased array would results in a huge deviation
+  on the ground.
+  \pause
+  \begin{figure}[H]
+    \centering
+    \only<3>{\includegraphics[width=.8\textwidth]{retrodirect.png}}
+    \only<3>\caption{\footnotesize A feedback loop guided by
+      a pilot beam.\cite{MPTtech4SPS}}
+  \end{figure}
+\end{frame}
+
+\begin{frame}[label=retroRA]{Recent Advances}
+  Japan scientists has developed a system with accuracy of
+  \alert{0.4 degrees RMS} in 2011.\cite{PAandRA4MPT}
+  \begin{columns}
+    \column{.5\textwidth}
+    \begin{figure}[H]
+      \centering
+      {\includegraphics[width=1.1\textwidth]{RA1.png}}
+      \caption{\footnotesize Software retro-directive
+        system.\cite{PAandRA4MPT}}
+    \end{figure}
+    \column{.5\textwidth}
+    \begin{figure}[H]
+      \centering
+      {\includegraphics[width=1.1\textwidth]{RA2.png}}
+      \caption{\footnotesize Step-tracking system.\cite{PAandRA4MPT}}
+    \end{figure}
+  \end{columns}
+\end{frame}
+
+\subsection{Rectenna}
+\begin{frame}[label=rect]{Functionality}
+  \begin{definition}
+    The \alert{rectenna} is used to capture and convert
+    RF energy to dc power.
+  \end{definition}
+  \begin{figure}[H]
+    \centering
+    {\includegraphics[width=0.9\textwidth]{rectenna.png}}
+    \caption{\small (a)Rectenna schematic; (b) Photograph of an
+    LP rectenna.\cite{MPTHMSP}}
+  \end{figure}
+\end{frame}
+\begin{frame}[label=rectRA]{Recent Advance}
+  A 5.8 GHz rectenna achieving 68.5\% conversion efficiency has been
+  developed at the University of Hong Kong.\cite{DESRECT}
+  \begin{figure}[H]
+    \centering
+    {\includegraphics[width=0.65\textwidth]{uhk_rect.png}}
+    \caption{\footnotesize University of Hong Kong
+    designed.\cite{MPTHMSP}}
+  \end{figure}
+\end{frame}
+\section{Roadmap}
+
+\begin{frame}[label=roadmap]{Roadmap for commercial SPS}
+  {\footnotesize Three phases: \emph{research}, \emph{development}, and
+  \emph{commercial} phase}
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{roadmap.png}
+  \end{figure}
+\end{frame}
+
+
+\appendix
+\begin{frame}[label=citation]
+  \frametitle<presentation>{Bibliography and Further Reading}
+    
+  \begin{thebibliography}{10}
+     
+    \footnotesize
+    \beamertemplatearticlebibitems
+    % Followed by interesting articles. Keep the list short. 
+
+  \bibitem{MPTtech4SPS}
+    S.~Sasaki, K.~Tanaka, and K.~Maki,
+    \newblock Microwave Power Transmission Technologies for Solar
+    Power Satellites.
+    \newblock {\em Proceedings of the IEEE}, Vol.101, No.6,
+    June 2013.
+
+  \bibitem{MPTHMSP}
+    B.~Strassner, II, and K.~Chang,
+    \newblock Microwave Power Transmission: Historical Milestones
+    and System Components
+    \newblock {\em Proceedings of the IEEE}, Vol.101, No.6,
+    June 2013.
+
+  \bibitem{PAandRA4MPT}
+    Y.~Homma, T.~Sasaki, K.~Namura, F.~Sameshima, T.~Ishikawa,
+    H.~Sumino, and N.~Shinohara,
+    \newblock New Phased Array and Rectenna Array Systems for
+    Microwave Power Transmission Research
+    \newblock {\em IMWS-IWPT2011}, 12-13, May 2011.
+
+  \bibitem{DESRECT}
+    C. Chin, Q. Xue, and C. Chan,
+    \newblock Design of a 5.8-GHz rectenna incorporating a new
+    patch antenna
+    \newblock {\em IEEE Antennas and Wireless Propag. Lett.},
+    Vol. 4, pp. 175-178, 2005.
+  \end{thebibliography}
+\end{frame}
+
+\end{document}
+
+
